@@ -9,14 +9,15 @@ module.exports.create = (req, res, next) => {
 
   return Vegetable.create({
     name: req.body.name,
-    category: req.body.categoryId
+    category: req.body.categoryId,
+    imageUrl: req.body.imageUrl
   })
   .then(() => res.status(201).send())
   .catch((err) => next(err))
 }
 
 module.exports.get = (req, res, next) => {
-  return Vegetable.findAll()
+  return Vegetable.findAll({include: 'category'})
   .then((vegetables) => res.send(vegetables))
   .catch((err) => next(err))
 }

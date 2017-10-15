@@ -3,10 +3,23 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    imageUrl: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     tableName: 'vegetable'
   })
+
+  Model.associate = (models) => {
+    Model.belongsTo(models.VegetableCategory, {
+      foreignKey: {
+        allowNull: false
+      },
+      as: 'category'
+    })
+  }
 
   return Model
 }

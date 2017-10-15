@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
       'vegetable',
-      'image_url',
+      'imageUrl',
       {
         type: Sequelize.STRING
       }
@@ -20,9 +20,9 @@ module.exports = {
     .then(() => {
       return queryInterface.addIndex(
         'vegetable_category',
-        ['label'],
+        ['name'],
         {
-          indexName: 'uniqueLabelIndex',
+          indexName: 'vcuniqueNameIndex',
           indicesType: 'UNIQUE'
         }
       )
@@ -31,7 +31,7 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeConstraint('vegetable', 'uniqueNameIndex')
-    .then(() => queryInterface.removeConstraint('vegetable_category', 'uniqueLabelIndex'))
-    .then(() => queryInterface.removeColumn('vegetable', 'image_url'))
+    .then(() => queryInterface.removeConstraint('vegetable_category', 'vcuniqueNameIndex'))
+    .then(() => queryInterface.removeColumn('vegetable', 'imageUrl'))
   }
 }

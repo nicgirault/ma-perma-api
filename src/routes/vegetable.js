@@ -56,6 +56,7 @@ router.get('/vegetable', controller.get)
  */
 router.post('/vegetable', [
   check('name').exists(),
+  check('imageUrl').exists(),
   check('categoryId').exists().isInt()
 ], controller.create)
 

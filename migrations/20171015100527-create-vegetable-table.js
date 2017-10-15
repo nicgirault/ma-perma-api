@@ -38,7 +38,7 @@ module.exports = {
             type: Sequelize.STRING,
             allowNull: false
           },
-          category: {
+          categoryId: {
             type: Sequelize.INTEGER,
             references: {
               model: 'vegetable_category',
