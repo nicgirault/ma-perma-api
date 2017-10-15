@@ -9,7 +9,7 @@ module.exports.create = (req, res, next) => {
 
   return Vegetable.create({
     name: req.body.name,
-    category: req.body.categoryId,
+    categoryId: req.body.categoryId,
     imageUrl: req.body.imageUrl
   })
   .then(() => res.status(201).send())
@@ -28,7 +28,7 @@ module.exports.createCategory = (req, res, next) => {
     return res.status(400).json({ errors: errors.mapped() })
   }
 
-  return VegetableCategory.create({label: req.body.label})
+  return VegetableCategory.create({name: req.body.name})
   .then(() => res.status(201).send())
   .catch((err) => next(err))
 }

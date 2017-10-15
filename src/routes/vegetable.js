@@ -94,9 +94,9 @@ router.get('/vegetable/category', controller.getCategories)
  *         schema:
  *           type: object
  *           required:
- *             - label
+ *             - name
  *           properties:
- *             label:
+ *             name:
  *               type: string
  *     responses:
  *       "201":
@@ -107,7 +107,7 @@ router.get('/vegetable/category', controller.getCategories)
  *         description: The request is invalid
  */
 router.post('/vegetable/category', [
-  check('label').exists()
+  check('name').exists()
 ], controller.createCategory)
 
 module.exports = router
