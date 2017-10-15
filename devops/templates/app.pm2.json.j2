@@ -1,0 +1,19 @@
+{
+  "apps" : [
+    {
+      "name": "ma-perma-api",
+      "script": "./src/index.js",
+      "cwd": "{{ app_root }}/current",
+      "watch": ["src", "package.json", "migrations", "node_modules"],
+      "env": {
+        "NODE_ENV": "production",
+        "APP_PORT": {{app_port}},
+        "APP_DB_HOST": "{{app_db_host}}",
+        "APP_DB_USER": "{{app_db_user}}",
+        "APP_DB_PASSWORD": "{{app_db_password}}",
+      },
+      "out_file": "{{ app_log_directory }}/out.log",
+      "error_file": "{{ app_log_directory }}/err.log"
+    }
+  ]
+}

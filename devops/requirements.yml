@@ -2,3 +2,4 @@
 - src: geerlingguy.nodejs
 - src: jdauphant.nginx
 - src: thefinn93.letsencrypt
+- src: weareinteractive.pm2

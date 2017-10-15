@@ -4,6 +4,7 @@
   "description": "Ma Perma API",
   "main": "src/index.js",
   "scripts": {
+    "deploy:production": "shipit production deploy",
     "lint": "standard",
     "migrate": "sequelize db:migrate --config src/config-migration.js --migrations-path migrations",
     "migration:create": "sequelize migration:create --config src/config-migration.js",
@@ -50,6 +51,9 @@
     "nodemon": "^1.11.0",
     "shipit-cli": "^3.0.0",
     "shipit-deploy": "^2.5.1",
+    "shipit-npm": "^0.2.0",
+    "shipit-pm2": "0.0.4",
+    "shipit-shared": "^4.4.2",
     "standard": "^10.0.3"
   }
 }
