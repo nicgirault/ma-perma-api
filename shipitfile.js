@@ -30,7 +30,7 @@ module.exports = function (shipit) {
     return shipit.remote(`cd ${shipit.releasePath} && npm run migrate`)
   })
 
-  shipit.on('deploy:updated', function () {
+  shipit.on('deploy', function () {
     shipit.start('migrate')
   })
 }
