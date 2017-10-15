@@ -1,0 +1,4 @@
+- src: ANXS.postgresql
+- src: geerlingguy.nodejs
+- src: jdauphant.nginx
+- src: thefinn93.letsencrypt

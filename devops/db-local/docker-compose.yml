@@ -1,0 +1,17 @@
+version: '2'
+services:
+  data:
+    image: postgres:9.6
+    container_name: "maperma_data"
+    volumes:
+      - /data/db
+
+  database:
+    image: nicgirault/mapermadb
+    container_name: "maperma_database"
+    volumes_from:
+      - data
+    ports:
+      - "5432:5432"
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata

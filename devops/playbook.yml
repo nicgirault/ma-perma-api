@@ -1,0 +1,13 @@
+---
+
+- name: Provisioning of Ma Perma API
+  hosts: all
+  remote_user: ubuntu
+  become: yes
+  vars_files:
+    - vars.yml
+  roles:
+    - ANXS.postgresql
+    - jdauphant.nginx
+    - geerlingguy.nodejs
+    - thefinn93.letsencrypt

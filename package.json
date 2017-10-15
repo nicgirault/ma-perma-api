@@ -1,0 +1,55 @@
+{
+  "name": "ma-perma-api",
+  "version": "1.0.0",
+  "description": "Ma Perma API",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "standard",
+    "migrate": "sequelize db:migrate --config src/config-migration.js --migrations-path migrations",
+    "migration:create": "sequelize migration:create --config src/config-migration.js",
+    "start": "npm run migrate && npm run server:watch",
+    "server:watch": "nodemon --config nodemon.json --inspect ./src/index.js"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "include": [
+      "src/**/*.js"
+    ],
+    "all": true
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "http-errors": "^1.6.2",
+    "jsonwebtoken": "^7.4.3",
+    "lodash": "^4.17.4",
+    "pg": "^6.4.2",
+    "sequelize": "^4.13.6",
+    "sequelize-cli": "^3.0.0",
+    "swagger-jsdoc": "^1.9.7",
+    "swagger-ui-dist": "^3.1.7",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "shipit-cli": "^3.0.0",
+    "shipit-deploy": "^2.5.1",
+    "standard": "^10.0.3"
+  }
+}

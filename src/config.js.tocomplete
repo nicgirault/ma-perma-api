@@ -1,0 +1,29 @@
+const _ = require('lodash')
+
+const config = {
+  development: {
+    DATABASE: {
+      dialect: 'postgresql',
+      host: 'localhost',
+      port: '5432',
+      username: 'mapermauser',
+      password: 'mapermapassword',
+      database: 'maperma'
+    },
+  },
+  production: {
+    DATABASE: {
+      dialect: 'postgresql',
+      host: 'xxx',
+      port: '5432',
+      username: 'xxx',
+      password: 'xxx',
+      database: 'xxx'
+    },
+  },
+  default: {
+    PORT: 8000
+  }
+}
+
+module.exports = _.assign(config.default, config[process.env.NODE_ENV])
