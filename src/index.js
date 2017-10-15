@@ -15,6 +15,7 @@ const VegetableRouter = require('./routes/vegetable')
 const CorsRouter = require('./routes/cors')
 
 const app = express()
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(accessLog)
