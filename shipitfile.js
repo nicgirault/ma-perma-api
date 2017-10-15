@@ -25,4 +25,12 @@ module.exports = function (shipit) {
       servers: 'ubuntu@api.maperma.org'
     }
   })
+
+  shipit.task('migrate', function () {
+    return shipit.remote(`cd ${shipit.releasePath} && npm run migrate`)
+  })
+
+  shipit.on('deploy:updated', function () {
+    shipit.start('migrate')
+  })
 }
