@@ -14,9 +14,10 @@ module.exports = {
         updatedAt: {
           type: Sequelize.DATE
         },
-        label: {
+        name: {
           type: Sequelize.STRING,
-          allowNull: false
+          allowNull: false,
+          unique: true
         }
       }
     ).then(() => {
@@ -35,6 +36,11 @@ module.exports = {
             type: Sequelize.DATE
           },
           name: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true
+          },
+          imageUrl: {
             type: Sequelize.STRING,
             allowNull: false
           },
