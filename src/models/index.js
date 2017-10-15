@@ -6,7 +6,7 @@ const config = require('../config')
 if (process.env.DATABASE_URL) {
   var sequelize = new Sequelize(process.env.DATABASE_URL, config)
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config)
+  var sequelize = new Sequelize(config.database.database, config.database.username, config.database.password, config.database)
 }
 
 const db = {}
