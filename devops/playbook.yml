@@ -11,3 +11,14 @@
     - jdauphant.nginx
     - geerlingguy.nodejs
     - thefinn93.letsencrypt
+    - weareinteractive.pm2
+  post_tasks:
+    - name: Creates /etc/pm2/conf.d directory
+      file: path=/etc/pm2/conf.d state=directory
+    - name: Create logs directory
+      file: path={{app_log_directory}} state=directory owner=ubuntu
+    - template:
+        src: app.pm2.json.j2
+        dest: /etc/pm2/conf.d/ma-perma-api.json
+    - name: set /var/www/ma-perma-api to ubuntu
+      file: path=/var/www/ma-perma-api state=directory owner=ubuntu
