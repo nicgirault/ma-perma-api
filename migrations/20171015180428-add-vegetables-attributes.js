@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn(
       'vegetable',
-      'imageUrl',
+      'image_url',
       {
         type: Sequelize.STRING
       }
@@ -32,6 +32,6 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeConstraint('vegetable', 'uniqueNameIndex')
     .then(() => queryInterface.removeConstraint('vegetable_category', 'uniqueLabelIndex'))
-    .then(() => queryInterface.removeColumn('vegetable', 'imageUrl'))
+    .then(() => queryInterface.removeColumn('vegetable', 'image_url'))
   }
 }
