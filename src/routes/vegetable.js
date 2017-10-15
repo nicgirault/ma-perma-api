@@ -8,6 +8,23 @@ const router = express.Router()
 /**
  * @swagger
  * /vegetable:
+ *   get:
+ *     tags:
+ *       - "Vegetable"
+ *     summary: Get all vegetables
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       "200":
+ *         description: The requested list.
+ *         application/json: |-
+ *           {}
+ */
+router.get('/vegetable', controller.get)
+
+/**
+ * @swagger
+ * /vegetable:
  *   post:
  *     tags:
  *       - "Vegetable"
@@ -45,6 +62,23 @@ router.post('/vegetable', [
 /**
  * @swagger
  * /vegetable/category:
+ *   get:
+ *     tags:
+ *       - "Vegetable"
+ *     summary: Get all vegetable categories
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       "200":
+ *         description: The requested list.
+ *         application/json: |-
+ *           {}
+ */
+router.get('/vegetable/category', controller.getCategories)
+
+/**
+ * @swagger
+ * /vegetable/category:
  *   post:
  *     tags:
  *       - "Vegetable"
@@ -74,22 +108,5 @@ router.post('/vegetable', [
 router.post('/vegetable/category', [
   check('label').exists()
 ], controller.createCategory)
-
-/**
- * @swagger
- * /vegetable/category:
- *   get:
- *     tags:
- *       - "Vegetable"
- *     summary: Get all vegetable categories
- *     produces:
- *       - application/json
- *     responses:
- *       "200":
- *         description: The requested list.
- *         application/json: |-
- *           {}
- */
-router.get('/vegetable/category', controller.getCategories)
 
 module.exports = router

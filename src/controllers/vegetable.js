@@ -15,6 +15,12 @@ module.exports.create = (req, res, next) => {
   .catch((err) => next(err))
 }
 
+module.exports.get = (req, res, next) => {
+  return Vegetable.findAll()
+  .then((vegetables) => res.send(vegetables))
+  .catch((err) => next(err))
+}
+
 module.exports.createCategory = (req, res, next) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
