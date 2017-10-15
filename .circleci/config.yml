@@ -27,7 +27,8 @@ jobs:
           name: Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ssh -o "StrictHostKeyChecking=no" ubuntu@api.maperma.org
+              echo "StrictHostKeyChecking no" > ~/.ssh/config
+              chmod 400 ~/.ssh/config
               npm run deploy:production
             else
               echo "Not master branch so not deploying"
