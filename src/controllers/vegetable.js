@@ -25,3 +25,9 @@ module.exports.createCategory = (req, res, next) => {
   .then(() => res.status(201).send())
   .catch((err) => next(err))
 }
+
+module.exports.getCategories = (req, res, next) => {
+  return VegetableCategory.findAll()
+  .then((categories) => res.send(categories))
+  .catch((err) => next(err))
+}
