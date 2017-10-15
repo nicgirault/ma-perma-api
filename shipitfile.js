@@ -12,7 +12,6 @@ module.exports = function (shipit) {
       ignores: ['.git', 'node_modules'],
       keepReleases: 2,
       deleteOnRollback: false,
-      key: '~/.aws/aws-eu-central-1.pem',
       shallowClone: true,
       shared: {
         overwrite: true,
