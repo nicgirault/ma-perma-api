@@ -84,10 +84,10 @@ router.post('/vegetable', [
 
 /**
  * @swagger
- * /vegetable/category:
+ * /category:
  *   get:
  *     tags:
- *       - "Vegetable"
+ *       - "Category"
  *     summary: Get all vegetable categories
  *     produces:
  *       - application/json
@@ -97,14 +97,14 @@ router.post('/vegetable', [
  *         application/json: |-
  *           {}
  */
-router.get('/vegetable/category', controller.getCategories)
+router.get('/category', controller.getCategories)
 
 /**
  * @swagger
- * /vegetable/category:
+ * /category:
  *   post:
  *     tags:
- *       - "Vegetable"
+ *       - "Category"
  *     summary: Create a vegetable category
  *     produces:
  *       - application/json
@@ -128,7 +128,7 @@ router.get('/vegetable/category', controller.getCategories)
  *       "400":
  *         description: The request is invalid
  */
-router.post('/vegetable/category', [
+router.post('/category', [
   check('name').exists()
 ], controller.createCategory)
 

@@ -28,6 +28,10 @@ const options = {
       {
         name: 'Association',
         description: 'Everything about vegetable associations'
+      },
+      {
+        name: 'Category',
+        description: 'Everything about vegetable categories'
       }
     ],
     schemes: ['http', 'https'],
