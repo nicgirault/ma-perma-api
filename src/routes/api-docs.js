@@ -24,6 +24,10 @@ const options = {
       {
         name: 'Vegetable',
         description: 'Everything about vegetables'
+      },
+      {
+        name: 'Association',
+        description: 'Everything about vegetable associations'
       }
     ],
     schemes: ['http', 'https'],
@@ -32,7 +36,8 @@ const options = {
     }
   },
   apis: [
-    path.join(__dirname, 'vegetable.js')
+    path.join(__dirname, 'vegetable.js'),
+    path.join(__dirname, 'association.js')
   ]
 }
 

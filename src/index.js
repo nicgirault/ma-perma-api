@@ -12,6 +12,7 @@ const corsMiddleware = require('./middlewares/cors')
 
 const ApiDocsRouter = require('./routes/api-docs')
 const VegetableRouter = require('./routes/vegetable')
+const AssociationRouter = require('./routes/association')
 const CorsRouter = require('./routes/cors')
 
 const app = express()
@@ -24,6 +25,7 @@ app.use(corsMiddleware)
 
 app.use(CorsRouter)
 app.use('/', VegetableRouter)
+app.use('/', AssociationRouter)
 app.use('/', ApiDocsRouter)
 app.use(errorsHandling)
 

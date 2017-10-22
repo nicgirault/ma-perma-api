@@ -24,6 +24,28 @@ router.get('/vegetable', controller.get)
 
 /**
  * @swagger
+ * /vegetable/{vegetableId}:
+ *   get:
+ *     tags:
+ *       - "Vegetable"
+ *     summary: Get a vegetable by id
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: vegetableId
+ *         description: The id of the vegetable to get
+ *         in: path
+ *         required: true
+ *     responses:
+ *       "200":
+ *         description: The requested vegetable.
+ *         application/json: |-
+ *           {}
+ */
+router.get('/vegetable/:vegetableId', controller.getById)
+
+/**
+ * @swagger
  * /vegetable:
  *   post:
  *     tags:

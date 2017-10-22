@@ -1,4 +1,5 @@
 const { Vegetable, VegetableCategory } = require('../models')
+const AssociationService = require('../services/association')
 const { validationResult } = require('express-validator/check')
 
 module.exports.create = (req, res, next) => {
@@ -19,6 +20,15 @@ module.exports.create = (req, res, next) => {
 module.exports.get = (req, res, next) => {
   return Vegetable.findAll({include: 'category'})
   .then((vegetables) => res.send(vegetables))
+  .catch((err) => next(err))
+}
+
+module.exports.getById = (req, res, next) => {
+  return Promise.all([
+    Vegetable.findById(req.params.vegetableId, {include: ['category']}),
+    AssociationService.getAssociatedVegetablesId(req.params.vegetableId)
+  ])
+  .then(([vegetable, associations]) => res.send(Object.assign(vegetable.toJSON(), associations)))
   .catch((err) => next(err))
 }
 

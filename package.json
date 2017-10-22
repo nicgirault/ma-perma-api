@@ -7,6 +7,7 @@
     "deploy:production": "shipit production deploy",
     "lint": "standard",
     "migrate": "sequelize db:migrate --config src/config-migration.js --migrations-path migrations",
+    "migrate:undo": "sequelize db:migrate:undo --config src/config-migration.js --migrations-path migrations",
     "migration:create": "sequelize migration:create --config src/config-migration.js",
     "start": "npm run migrate && npm run server:watch",
     "server:watch": "nodemon --config nodemon.json --inspect ./src/index.js"
