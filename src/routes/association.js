@@ -2,6 +2,7 @@ const express = require('express')
 const { check } = require('express-validator/check')
 
 const controller = require('../controllers/association')
+const { validateUnicity } = require('../services/association')
 
 const router = express.Router()
 
@@ -41,7 +42,13 @@ const router = express.Router()
  *       "400":
  *         description: The request is invalid
  */
-router.post('/vegetable/:vegetableId/association', controller.post)
+router.post('/vegetable/:vegetableId/association', [
+  check('vegetableId').isInt().exists().custom((value, {req}) => {
+    return validateUnicity(value, req.body.vegetableIdToAssociate)
+  }),
+  check('vegetableIdToAssociate').isInt().exists(),
+  check('isPositive').isBoolean().exists()
+], controller.post)
 
 /**
  * @swagger
