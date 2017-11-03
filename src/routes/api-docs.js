@@ -1,4 +1,5 @@
 const express = require('express')
+const swaggerUiAssetPath = require('swagger-ui-dist').getAbsoluteFSPath()
 const swaggerJSDoc = require('swagger-jsdoc')
 const path = require('path')
 
@@ -20,35 +21,22 @@ const options = {
       title: 'Ma Perma API Specs',
       version: '1.0.0'
     },
-    tags: [
-      {
-        name: 'Vegetable',
-        description: 'Everything about vegetables'
-      },
-      {
-        name: 'Association',
-        description: 'Everything about vegetable associations'
-      },
-      {
-        name: 'Category',
-        description: 'Everything about vegetable categories'
-      }
-    ],
     schemes: ['http', 'https'],
     securityDefinitions: {
       Bearer: { type: 'apiKey', name: 'Authorization', in: 'header' }
     }
   },
   apis: [
-    path.join(__dirname, 'vegetable.js'),
-    path.join(__dirname, 'association.js')
+    path.join(__dirname, 'flower.js'),
+    path.join(__dirname, 'relation.js'),
+    path.join(__dirname, 'property.js')
   ]
 }
 
 const swaggerSpec = swaggerJSDoc(options)
 
-router.use('/', express.static('./node_modules/swagger-ui-dist'))
-router.use('/api-docs', express.static('./node_modules/swagger-ui-dist'))
+router.use('/', express.static(swaggerUiAssetPath))
+router.use('/api-docs', express.static(swaggerUiAssetPath))
 router.use('/api-docs/specs.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json')
   res.send(swaggerSpec)

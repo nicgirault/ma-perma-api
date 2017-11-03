@@ -1,7 +1,7 @@
-const _ = require('lodash')
 const logger = require('../services/logger')
 
 module.exports = (err, req, res, next) => {
+  logger.error(err)
   if (res.headersSent) {
     return next(err)
   }

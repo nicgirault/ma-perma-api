@@ -22,7 +22,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # - run: npm test -- --coverage
+      # - run: npm test
+
       - deploy:
           name: Deploy
           command: |

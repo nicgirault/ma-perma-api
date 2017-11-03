@@ -1,25 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.define('Association', {
-    isPositive: {
-      type: DataTypes.BOOLEAN,
+  const Model = sequelize.define('FlowerProperty', {
+    value: {
+      type: DataTypes.STRING,
       allowNull: false
     }
   }, {
-    tableName: 'vegetable_association'
+    tableName: 'flower_property'
   })
 
   Model.associate = (models) => {
-    Model.belongsTo(models.Vegetable, {
+    Model.belongsTo(models.Flower, {
       foreignKey: {
         allowNull: false
       },
-      as: 'vegetableA'
+      as: 'flower'
     })
-    Model.belongsTo(models.Vegetable, {
+    Model.belongsTo(models.Property, {
       foreignKey: {
         allowNull: false
       },
-      as: 'vegetableB'
+      as: 'property'
     })
   }
 

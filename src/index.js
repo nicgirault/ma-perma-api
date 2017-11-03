@@ -11,8 +11,9 @@ const accessLog = require('./middlewares/access-log')
 const corsMiddleware = require('./middlewares/cors')
 
 const ApiDocsRouter = require('./routes/api-docs')
-const VegetableRouter = require('./routes/vegetable')
-const AssociationRouter = require('./routes/association')
+const FlowerRouter = require('./routes/flower')
+const RelationRouter = require('./routes/relation')
+const PropertyRouter = require('./routes/property')
 const CorsRouter = require('./routes/cors')
 
 const app = express()
@@ -24,8 +25,9 @@ app.use(cookieParser())
 app.use(corsMiddleware)
 
 app.use(CorsRouter)
-app.use('/', VegetableRouter)
-app.use('/', AssociationRouter)
+app.use('/', FlowerRouter)
+app.use('/', RelationRouter)
+app.use('/', PropertyRouter)
 app.use('/', ApiDocsRouter)
 app.use(errorsHandling)
 

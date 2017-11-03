@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "Ma Perma API",
   "main": "src/index.js",
+  "repository": "https://github.com/nicgirault/ma-perma-api",
   "scripts": {
     "deploy:production": "shipit production deploy",
     "lint": "standard",
     "migrate": "sequelize db:migrate --config src/config-migration.js --migrations-path migrations",
     "migrate:undo": "sequelize db:migrate:undo --config src/config-migration.js --migrations-path migrations",
+    "migrate:undo:all": "sequelize db:migrate:undo:all --config src/config-migration.js --migrations-path migrations",
     "migration:create": "sequelize migration:create --config src/config-migration.js",
     "start": "npm run migrate && npm run server:watch",
-    "server:watch": "nodemon --config nodemon.json --inspect ./src/index.js"
+    "server:watch": "nodemon --config nodemon.json --inspect ./src/index.js",
+    "test": "APP_DB_NAME=mapermatest npm run migrate:undo:all && APP_DB_NAME=mapermatest npm run migrate && APP_DB_NAME=mapermatest mocha --exit src/**/*.spec.js"
   },
   "nyc": {
     "reporter": [
@@ -50,12 +53,15 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
     "nodemon": "^1.11.0",
     "shipit-cli": "^3.0.0",
     "shipit-deploy": "^2.5.1",
     "shipit-npm": "^0.2.0",
     "shipit-pm2": "0.0.4",
     "shipit-shared": "^4.4.2",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "supertest": "^3.0.0"
   }
 }

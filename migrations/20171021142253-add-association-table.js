@@ -1,7 +1,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable(
-      'vegetable_association',
+      'flower_relation',
       {
         id: {
           type: Sequelize.INTEGER,
@@ -14,60 +14,43 @@ module.exports = {
         updatedAt: {
           type: Sequelize.DATE
         },
-        vegetableAId: {
+        flowerAId: {
           type: Sequelize.INTEGER,
           references: {
-            model: 'vegetable',
+            model: 'flower',
             key: 'id',
             allowNull: false
-          },
-          unique: 'association_vegetables'
+          }
         },
-        vegetableBId: {
+        flowerBId: {
           type: Sequelize.INTEGER,
           references: {
-            model: 'vegetable',
+            model: 'flower',
             key: 'id',
             allowNull: false
-          },
-          unique: 'association_vegetables'
+          }
         },
-        isPositive: {
-          type: Sequelize.BOOLEAN,
+        description: {
+          type: Sequelize.STRING,
+          allowNull: true
+        },
+        type: {
+          type: Sequelize.ENUM('ASSOCIATE_WITH', 'DONT_ASSOCIATE_WITH', 'DONT_PRECEDE'),
           allowNull: false
         }
       }
     ).then(() => {
       return queryInterface.addIndex(
-        'vegetable_association',
-        ['vegetableAId', 'vegetableBId'],
+        'flower_relation',
+        ['flowerAId', 'flowerBId'],
         {
           indicesType: 'UNIQUE'
-        }
-      )
-    }).then(() => {
-      return queryInterface.addColumn(
-        'vegetable',
-        'sowingPeriod',
-        {
-          type: Sequelize.STRING
-        }
-      )
-    })
-    .then(() => {
-      return queryInterface.addColumn(
-        'vegetable',
-        'harvestPeriod',
-        {
-          type: Sequelize.STRING
         }
       )
     })
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('vegetable_association')
-    .then(() => queryInterface.removeColumn('vegetable', 'sowingPeriod'))
-    .then(() => queryInterface.removeColumn('vegetable', 'harvestPeriod'))
+    return queryInterface.dropTable('flower_relation')
   }
 }

@@ -11,6 +11,7 @@ module.exports = function (shipit) {
       repositoryUrl: 'https://github.com/nicgirault/ma-perma-api.git',
       ignores: ['.git', 'node_modules'],
       keepReleases: 2,
+      key: '~/.aws/aws-eu-central-1.pem',
       deleteOnRollback: false,
       shallowClone: true,
       shared: {
