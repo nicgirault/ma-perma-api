@@ -75,3 +75,16 @@ module.exports.getById = (req, res, next) => {
   })
   .catch((err) => next(err))
 }
+
+module.exports.patch = (req, res, next) => {
+  return Flower.findById(req.params.flowerId)
+  .then((flower) => {
+    if (!flower) return next(createError.NotFound('FLOWER_NOT_FOUND'))
+    if (req.body.name) flower.name = req.body.name
+    if (req.body.description) flower.description = req.body.description
+    if (req.body.imageUrl) flower.imageUrl = req.body.imageUrl
+    return flower.save()
+  })
+  .then((flower) => res.json(flower))
+  .catch((err) => next(err))
+}

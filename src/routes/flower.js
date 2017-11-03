@@ -157,4 +157,45 @@ router.post('/flower/:flowerId/property', [
   check('flowerId').exists().isInt()
 ], controller.addProperty)
 
+/**
+ * @swagger
+ * /flower/{flowerId}:
+ *   patch:
+ *     tags:
+ *       - "Flower"
+ *     summary: Modify a flower
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         description: The body of the request
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *             imageUrl:
+ *               type: string
+ *             description:
+ *               type: string
+ *       - name: flowerId
+ *         description: The flowerId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       "200":
+ *         description: The request has been fulfilled
+ *         application/json: |-
+ *           {}
+ *       "400":
+ *         description: The request is invalid
+ */
+router.patch('/flower/:flowerId', [
+  check('flowerId').exists().isInt()
+], controller.patch)
+
 module.exports = router
