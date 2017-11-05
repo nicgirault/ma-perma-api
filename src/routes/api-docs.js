@@ -29,7 +29,10 @@ const options = {
   apis: [
     path.join(__dirname, 'flower.js'),
     path.join(__dirname, 'relation.js'),
-    path.join(__dirname, 'property.js')
+    path.join(__dirname, 'property.js'),
+    path.join(__dirname, 'variety.js'),
+    path.join(__dirname, 'comment.js'),
+    path.join(__dirname, 'dealer.js')
   ]
 }
 

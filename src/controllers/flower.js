@@ -66,7 +66,7 @@ module.exports.getById = (req, res, next) => {
     Flower.findById(req.params.flowerId, {include: [{
       association: 'properties',
       include: 'property'
-    }]}),
+    }, 'varieties']}),
     RelationService.getRelatedFlowersId(req.params.flowerId)
   ])
   .then(([flower, relations]) => {

@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'properties',
       foreignKey: 'flowerId'
     })
+    Model.hasMany(models.Variety, {
+      as: 'varieties',
+      foreignKey: 'flowerId'
+    })
   }
 
   return Model
